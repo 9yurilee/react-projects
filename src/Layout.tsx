@@ -1,6 +1,4 @@
-import { Global, css } from "@emotion/react";
 import styled from "@emotion/styled";
-import Gallery from "./gallery/Gallery";
 import { useNavigate } from "react-router-dom";
 
 interface LayoutDefaultProps {
@@ -25,7 +23,7 @@ const Layout = ({ children }: LayoutDefaultProps) => {
   ];
 
   return (
-    <div>
+    <LayOut>
       <Container>
         <Left>
           {list.map((item, index) => (
@@ -36,9 +34,15 @@ const Layout = ({ children }: LayoutDefaultProps) => {
         </Left>
         <Right>{children}</Right>
       </Container>
-    </div>
+    </LayOut>
   );
 };
+
+const LayOut = styled.div`
+  width: 80%;
+  height: 80vh;
+  margin: auto;
+`;
 
 const Container = styled.div`
   width: 100%;
@@ -47,7 +51,7 @@ const Container = styled.div`
   border-radius: 6px;
   padding: 4px;
   display: flex;
-  gap: 20px;
+  gap: 4px;
 `;
 
 const Left = styled.div``;
@@ -69,7 +73,7 @@ const Right = styled.div`
   width: 100%;
   border: 2px solid #bbb;
   border-radius: 6px;
-  padding: 10px;
+  padding: 30px;
 `;
 
 export default Layout;
