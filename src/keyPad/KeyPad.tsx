@@ -6,7 +6,7 @@ import { css } from "@emotion/react";
 
 const KeyPad = () => {
   const [keyPadOn, setKeyPadOn] = useState<boolean>(false);
-  const [number, setNumber] = useState<(number | string)[]>([]);
+  const [number, setNumber] = useState<number[]>([]);
   const [input, setInput] = useState<string>("");
   const [clicked, setClicked] = useState({ index: 0, isClicked: false });
 
@@ -15,7 +15,7 @@ const KeyPad = () => {
   }, [keyPadOn]);
 
   const generateNewNumbers = () => {
-    const newNumbers: (number | string)[] = [];
+    const newNumbers: number[] = [];
 
     while (newNumbers.length < 10) {
       const num = Math.floor(Math.random() * 10);
@@ -25,16 +25,17 @@ const KeyPad = () => {
       }
     }
 
-    return [...newNumbers, "reset", "←"];
+    return [...newNumbers, -1, -2];
   };
 
-  const handleClickKeyPad = (num: number | string) => {
-    if (num === "reset") {
+  const handleClickKeyPad = (num: number) => {
+    console.log(num);
+    if (num === -1) {
       handleResetClick();
-    } else if (num === "←") {
+    } else if (num === -2) {
       setInput(input.slice(0, -1));
     } else {
-      setInput(input + num);
+      num > 0 && setInput(input + num);
     }
   };
 
@@ -63,27 +64,26 @@ const KeyPad = () => {
         </Top>
         {keyPadOn && (
           <ButtonContainer>
-            {number.map((num, index) => (
-              <Button
-                key={index}
-                onClick={() => handleClickKeyPad(num)}
-                onMouseDown={() => setClicked({ index, isClicked: true })}
-                onMouseUp={() => setClicked({ index, isClicked: false })}
-                css={css`
-                  color: ${clicked.index === index && clicked.isClicked
-                    ? "#ccc"
-                    : "#888"};
-                  background: ${clicked.index === index && clicked.isClicked
-                    ? "#eee"
-                    : ""};
-                  border-color: ${clicked.index === index && clicked.isClicked
-                    ? "#ccc"
-                    : "#888"};
-                `}
-              >
-                {num}
-              </Button>
-            ))}
+            {number.map((num, index) => {
+              const clickedThisButton =
+                clicked.index === index && clicked.isClicked;
+
+              return (
+                <Button
+                  key={index}
+                  onClick={() => handleClickKeyPad(num)}
+                  onMouseDown={() => setClicked({ index, isClicked: true })}
+                  onMouseUp={() => setClicked({ index, isClicked: false })}
+                  css={css`
+                    color: ${clickedThisButton ? "#ccc" : "#666"};
+                    background: ${clickedThisButton ? "#eee" : ""};
+                    border-color: ${clickedThisButton ? "#ccc" : "#888"};
+                  `}
+                >
+                  {num === -1 ? "reset" : num === -2 ? "←" : num}
+                </Button>
+              );
+            })}
           </ButtonContainer>
         )}
       </KeyPadContainer>
@@ -126,7 +126,8 @@ const InputContainer = styled.input`
 const ButtonContainer = styled.div`
   width: 100%;
   height: 350px;
-  background-color: #eee;
+  background: #eee;
+  padding: 0 10px;
   border-radius: 6px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
