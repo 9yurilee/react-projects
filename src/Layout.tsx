@@ -2,7 +2,6 @@ import { Global, css } from "@emotion/react";
 import styled from "@emotion/styled";
 import Gallery from "./gallery/Gallery";
 import { useNavigate } from "react-router-dom";
-import GlobalStyle from "./GlobalStyle";
 
 interface LayoutDefaultProps {
   children?: React.ReactElement;
@@ -27,7 +26,6 @@ const Layout = ({ children }: LayoutDefaultProps) => {
 
   return (
     <div>
-      <Global styles={GlobalStyle} />
       <Container>
         <Left>
           {list.map((item, index) => (
