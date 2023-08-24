@@ -15,8 +15,8 @@ const Layout = ({ children }: LayoutDefaultProps) => {
   const list = [
     { name: "메인", path: "/" },
     {
-      name: "이미지 갤러리",
-      path: "/gallery"
+      name: "그림판",
+      path: "/drawing"
     },
     { name: "버튼 키패드", path: "/keypad" },
     { name: "캐러셀", path: "/carousel" }
