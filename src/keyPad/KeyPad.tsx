@@ -79,6 +79,7 @@ const KeyPad = () => {
                 </Button>
               );
             })}
+            <CR>9yurilee</CR>
           </ButtonContainer>
         )}
       </KeyPadContainer>
@@ -87,7 +88,9 @@ const KeyPad = () => {
 };
 
 const KeyPadContainer = styled.div`
-  width: 400px;
+  @media (min-width: 768px) {
+    width: 400px;
+  }
 `;
 
 // css props로 넘겨주는 방법
@@ -95,35 +98,38 @@ const textStyle = css`
   font-size: 14px;
   color: #bbb;
   &:hover {
-    color: skyblue;
+    color: #555;
     cursor: pointer;
   }
 `;
 
 const Top = styled.div`
-  width: 100%;
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 4px;
   margin-bottom: 10px;
 `;
 
 const InputContainer = styled.input`
-  width: 80%;
+  flex-grow: 1;
   height: 30px;
   outline: none;
-  border: 1px solid $ccc;
-  border-radius: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
   padding: 5px 10px;
   box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const ButtonContainer = styled.div`
   width: 100%;
-  height: 350px;
+  height: 250px;
   background: #eee;
-  padding: 0 10px;
+  padding: 10px;
   border-radius: 6px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -133,14 +139,23 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.div`
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 100%;
   border: 2px solid #666;
   border-radius: 10px;
-  line-height: 80px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
   font-size: 20px;
+`;
+
+const CR = styled.span`
+  font-size: 10px;
+  color: #ccc;
+  opacity: 0.3;
+  position: absolute;
+  pointer-events: none;
 `;
 
 export default KeyPad;
