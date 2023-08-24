@@ -29,19 +29,14 @@ const KeyPad = () => {
   };
 
   const handleClickKeyPad = (num: number) => {
-    console.log(num);
     if (num === -1) {
-      handleResetClick();
+      setInput("");
+      setNumber(generateNewNumbers());
     } else if (num === -2) {
       setInput(input.slice(0, -1));
     } else {
-      num > 0 && setInput(input + num);
+      num >= 0 && setInput(input + num);
     }
-  };
-
-  const handleResetClick = () => {
-    setInput("");
-    setNumber(generateNewNumbers());
   };
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -95,6 +90,7 @@ const KeyPadContainer = styled.div`
   width: 400px;
 `;
 
+// css props로 넘겨주는 방법
 const textStyle = css`
   font-size: 14px;
   color: #bbb;
