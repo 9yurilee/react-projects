@@ -9,16 +9,16 @@ Tech. `React`, `TypeScript`, `Emotion`
 
 ### 홈화면
 
-![Main page](image.png)
+![image](https://github.com/9yurilee/react-projects/assets/97436315/83fbd685-aa24-4874-be8b-75a3362573f6)
+
 왼쪽에 메뉴를 두고 오른쪽은 메뉴에 해당하는 화면을 보여주는 형태로 구현하였다.
 
 ### 지도 (feat. 카카오맵)
+![image](https://github.com/9yurilee/react-projects/assets/97436315/4ab5269b-cc85-44c4-9f75-3a0e4ee8bd14)
 
 카카오맵 API를 이용하여 지도 구현 및 주소 검색 기능 구현
 
 - 빈칸으로 검색 시 에러 띄우기
-
-<!-- <br/> -->
 
 ### 그림판
 
@@ -32,7 +32,8 @@ Tech. `React`, `TypeScript`, `Emotion`
 
 ### 가상 키패드
 
-![KeyPad](image-1.png)
+![image](https://github.com/9yurilee/react-projects/assets/97436315/c575806f-6f57-4d8f-88c3-14cf398d4b38)
+
 
 키패드는 난수로, 키패드를 닫았다 열거나 Reset 버튼을 누를 때마다 재정렬.
 
