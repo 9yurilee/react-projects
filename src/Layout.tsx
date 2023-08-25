@@ -64,8 +64,6 @@ const Right = styled.div`
   padding: 20px;
   box-sizing: border-box;
   background: white;
-  @media (max-width: 375px) {
-  }
 `;
 
 const Menu = styled.div`
