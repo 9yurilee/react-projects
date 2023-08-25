@@ -19,6 +19,7 @@ const Layout = ({ children }: LayoutDefaultProps) => {
       path: "/drawing"
     },
     { name: "버튼 키패드", path: "/keypad" },
+    { name: "지도", path: "/map" },
     { name: "캐러셀", path: "/carousel" }
   ];
 
